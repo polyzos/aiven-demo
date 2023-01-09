@@ -14,8 +14,9 @@ Aiven Demo
 - **ecommerce.events.users:** Stores events enriched with user information
 - **ecommerce.events.enriched:** Stores the final enriched events with user and product information
 
-### Table Schemas
-events and events_filtered
+Table Schemas
+-----------------
+**Events Table (events)** and **Events Filtered Table (events_filtered)**
 ```sql
 eventTime BIGINT,
 eventTime_ltz AS TO_TIMESTAMP_LTZ(eventTime, 3),
@@ -30,7 +31,7 @@ userSession STRING,
     WATERMARK FOR eventTime_ltz AS eventTime_ltz - INTERVAL '5' SECONDS
 ```
 
-user 
+**Users Table (users)** 
 ```sql
 userId      STRING,
 firstname   STRING,
@@ -41,7 +42,7 @@ title       STRING,
 address     STRING
 ```
 
-product
+**Product Table(products)**
 ```sql
 productCode STRING,
 productColor STRING,
@@ -49,7 +50,7 @@ promoCode STRING,
 productName STRING
 ```
 
-eventusers
+**Events with User Information Table (eventusers)**
 ```sql
 eventTime   BIGINT,
 productId   STRING,
@@ -61,7 +62,7 @@ email       STRING,
 address     STRING
 ```
 
-enriched_events
+**Enriched Events Table (enriched_events)**
 ```sql
 userSession STRING,
 firstname   STRING,
@@ -73,8 +74,9 @@ productName MULTISET<STRING>
 PRIMARY KEY (userSession) NOT ENFORCED
 ```
 
-### Job Queries
-EventFilter
+Job Queries
+-----------
+**EventFilter**
 ```sql
 INSERT INTO events_filtered
 SELECT eventTime, eventType, productId, categoryId, categoryCode, brand, price, userid, userSession
@@ -82,7 +84,7 @@ FROM events
 WHERE eventType='purchase'
 ```
 
-EventUserInfo
+**EventUserInfo**
 ```sql
 INSERT INTO eventusers
 SELECT
@@ -99,7 +101,7 @@ FROM events_filtered
 ```
 
 
-EventEnrichment
+**EventEnrichment**
 ```sql
 INSERT INTO events_enriched
 SELECT eventusers.userSession,
