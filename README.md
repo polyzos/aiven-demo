@@ -2,7 +2,7 @@ Aiven Demo
 -----------
 
 <p align="center">
-    <img src="images/pipeline2.png" width="1200" height="500">
+    <img src="images/pipeline.png" width="1000" height="600">
 </p>
 
 
