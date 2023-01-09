@@ -2,7 +2,7 @@ Aiven Demo
 -----------
 
 <p align="center">
-    <img src="images/pipeline.png" width="1000" height="600">
+    <img src="images/pipeline.png" width="1000" height="500">
 </p>
 
 
@@ -68,9 +68,9 @@ userSession STRING,
 firstname   STRING,
 lastname    STRING,
 email       STRING,
-address     STRING
+address     STRING,
 price       DOUBLE,
-productName MULTISET<STRING>
+productName MULTISET<STRING>,
 PRIMARY KEY (userSession) NOT ENFORCED
 ```
 
