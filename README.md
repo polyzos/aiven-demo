@@ -5,9 +5,16 @@ Aiven Demo
     <img src="images/pipeline.png" width="1000" height="500">
 </p>
 
+What we will do
+---------------
+- Setup a highly available PoC cluster
+- Setup Kafka and Flink Logical Components
+- Add Metrics and Logs
+- Deploy streaming pipelines
+- Setup Data Mirroring
 
 ### Topics
-- **ecommerce.users:** Compacted Topic storing the latest user state
+- **ecommerce.users:** Compacted Topic storing the latest user state (3.5 million records of state)
 - **ecommerce.products:** Compacted Topic storing the latest product state
 - **ecommerce.events:** Stores the raw events
 - **ecommerce.events.filtered:** Stores only purchase events
